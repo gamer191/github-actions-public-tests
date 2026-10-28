@@ -7,11 +7,11 @@ jobs:
     strategy:
       matrix:
         curl_cffi_versions: [0.16.3,0.17.0]
+      fail-fast: false
     steps:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
         with:
-          python-version: '3.15'
-          check-latest: true
+          python-version: '3.15.2'
       - run: pip install pyinstaller
       - run: pip install curl_cffi==${{ matrix.curl_cffi_versions }}
       - run: pyinstaller <(echo "import curl_cffi;print(curl_cffi.__version__)") -F
