@@ -1,5 +1,8 @@
 name: pyinstaller-test
-on: push
+on: 
+  push:
+    paths:
+      - .github/workflows/curl_cffi.yml
 jobs:
   pyinstaller:
     name: pyinstaller test
