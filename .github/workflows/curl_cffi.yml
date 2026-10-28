@@ -17,5 +17,5 @@ jobs:
       - run: pip install curl_cffi==${{ matrix.curl_cffi_versions }}
       - run: echo "import curl_cffi;print(curl_cffi.__version__)" > curl_cffi_test.py
       - run: pyinstaller curl_cffi_test.py -F
-      - run: ./curl_cffi_test.exe
+      - run: .\dist\curl_cffi_test.exe
       
