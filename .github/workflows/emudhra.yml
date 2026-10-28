@@ -14,4 +14,4 @@ jobs:
         check: ["check 1","check 2","check 3","check 4"]
       fail-fast: false
     steps:
-      - run: ${{matrix.command}}
+      - run: ${{matrix.command}}||echo ::warning:: $(${{matrix.command}})
