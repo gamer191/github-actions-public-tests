@@ -13,10 +13,7 @@ jobs:
         with:
           python-version: 3.15
       - run: pip install pyinstaller
-      - run: git clone https://github.com/lexiforest/curl_cffi/
-      - run: cd curl_cffi&&git checkout ${{matrix.curl_cffi_version}}
-      - run: cd curl_cffi&&make preprocess
-      - run: cd curl_cffi&&pip install .
+      - run: pip install git+ttps://github.com/lexiforest/curl_cffi.git@${{matrix.curl_cffi_version}}
       - run: echo "import curl_cffi;print(curl_cffi.__version__)" > curl_cffi_test.py
       - run: pyinstaller curl_cffi_test.py -F
       - run: .\dist\curl_cffi_test.exe
