@@ -6,14 +6,17 @@ jobs:
     runs-on: windows-2025
     strategy:
       matrix:
-        curl_cffi_versions: [0.16.3, 0.16.4b1, 0.17.0b1, 0.17.0b2, 0.17.0rc1, 0.17.0]
+        curl_cffi_version: [4e20fcd9adba3fc7bef29f8976d953640f001f7e, 27794c9ed863884cf34aa8cfd88859e6ab08cb67]
       fail-fast: false
     steps:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
         with:
           python-version: 3.15
       - run: pip install pyinstaller
-      - run: pip install curl_cffi==${{ matrix.curl_cffi_versions }}
+      - run: git clone https://github.com/lexiforest/curl_cffi/
+      - run: cd curl_cffi&&git checkout ${{matrix.curl_cffi_version}}
+      - run: make curl_cffi/preprocess
+      - run: pip install ./curl_cffi
       - run: echo "import curl_cffi;print(curl_cffi.__version__)" > curl_cffi_test.py
       - run: pyinstaller curl_cffi_test.py -F
       - run: .\dist\curl_cffi_test.exe
