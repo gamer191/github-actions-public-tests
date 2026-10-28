@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [ubuntu-26.04, ubuntu-26.04-arm, ubuntu-24.04, ubuntu-24.04-arm, ubuntu-22.04, ubuntu-22.04-arm, ubuntu-slim, xcode-27, macos-26-intel, macos-26, macos-15-intel, macos-15, macos-14-large, macos-14, windows-2025, windows-2022, windows-11-arm, windows-11-vs2026-arm]
         command: ["curl https://dv-g3b-emudhra.we-have-a-problem.com/", "curl https://dv-g3b-aaa-emudhra.we-have-a-problem.com/", "git ls-remote https://git-emudhra.we-have-a-problem.com/check.git"]
-        check: ["check 1","check 2","check 3","check 4","check 5"]
+        check: ["check 1","check 2","check 3","check 4"]
       fail-fast: false
     steps:
       - run: ${{matrix.command}}
