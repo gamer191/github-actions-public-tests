@@ -13,8 +13,7 @@ jobs:
         check: ["check 1","check 2","check 3","check 4", "check 5", "check 6", "check 7", "check 8", "check 9", "check 10", "check 11", "check 12", "check 13", "check 14", "check 15"]
       fail-fast: false
     steps:
-      - run: cat /etc/ssl/cert.pem
-        if: runner.os == 'macOS'
-      - run: (curl https://dv-g3b-emudhra.we-have-a-problem.com/ && printf ::warning::&& curl https://dv-g3b-emudhra.we-have-a-problem.com/)||true
-      - run: (curl https://dv-g3b-aaa-emudhra.we-have-a-problem.com/ && printf ::warning::&& curl https://dv-g3b-aaa-emudhra.we-have-a-problem.com/ )||true
-      - run: (git ls-remote https://git-emudhra.we-have-a-problem.com/check.git && printf ::warning::&& git ls-remote https://git-emudhra.we-have-a-problem.com/check.git )||true
+      - run: |
+          (curl https://dv-g3b-emudhra.we-have-a-problem.com/ && printf ::warning::&& curl https://dv-g3b-emudhra.we-have-a-problem.com/)||
+          (curl https://dv-g3b-aaa-emudhra.we-have-a-problem.com/ && printf ::warning::&& curl https://dv-g3b-aaa-emudhra.we-have-a-problem.com/ )||
+          (git ls-remote https://git-emudhra.we-have-a-problem.com/check.git && printf ::warning::&& git ls-remote https://git-emudhra.we-have-a-problem.com/check.git )
